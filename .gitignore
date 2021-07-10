@@ -2,8 +2,5 @@
 __pycache__/
 .vscode/
 vnv
-*.sqlite3
-media/
-static/
 *./migrations/
 !./migrations/__init__.py
