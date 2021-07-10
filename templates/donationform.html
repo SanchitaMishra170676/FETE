@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+  <!-- {% if messages %}
+  {% for message in messages %}
+    <script> alertify.{{message.tags}}('{{message}}');</script>
+  {% endfor %}
+  {% endif %} -->
+
+
+    <!-- Jquery -->
+	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css/donor.css' %}"/>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	{% if messages %}
+	{% for message in messages %}
+	  <script>swal("Hey there!","{{message}}","{{message.tags}}");</script>
+	{% endfor %}
+	{% endif %}
+
+<body class="form-v4" style="margin-top: 70px;">
+	<div class="page-content">
+		<div class="form-v4-content">
+			<div class="form-left">
+				<h2>FETE INDIA VOLUNTEERING PROGRAMME</h2>
+				<p class="text-1">FROM EXTRA TO ENOUGH (NGO) VOLUNTEERING PROGRAM</p>
+				<p class="text-2"><span >FETE is a leading NGO OF MEERUT DISTRICT for children with special needs.</span> <br>
+                <p>With over a year of experience and a highly qualified team, the team also provides families with access to the services and resources that support the child's learning and development.</p>
+                <p>TEAM FETE thereby invites volunteers to join hands in their journey to a socially inclusive and cooperative society.  </p>
+                <p class="text-1">Job Description:</p>
+                <p>
+                1. Online and offline participation in the fundraising campaign and NGO work <br>
+				2. Marketing for the NGO <br>
+				3. Choose the positions given below wisely!<br>
+                <p class="text-1">Perks:</p>
+                1. CERTIFICATES will be awarded to all the volunteers  <br>
+				2.LORs will be awarded to those who'll be working for a minimum of 50 hours<br>
+				
+                Fill the form below to register for the volunteer's program...</p>
+                <p>
+                    A person could opt to pay any of the following amount to register successfully as a member...
+                </p>
+				<p>
+					₹150/- as an Annual Fee
+             		<br>	OR     <br>
+					₹1100/- as Life Membership Fee
+				</p>
+				<p>Send this amount via UPI/PAYTM to </p>
+				<p>
+					fete@paytm
+					<br>	 OR		<br>
+					9897573524 
+				</p>
+				<p>For further assistance contact : </p>
+				<b>Mr Anmol Dhingra</b>
+				<p>+91 6397270740</p>
+				<b>Ms Manya Batra</b>
+				<p>+91 7906661038</p>
+				<p>The name and photo associated with your Google account will be recorded when you upload files and submit this form</p>
+			</div>
+			<form class="form-detail" enctype="multipart/form-data" method="post" action = '/donation/' >
+				{% csrf_token %} 
+				<h2>REGISTRATION FORM</h2>
+				<div class="form-group">
+					<div class="form-row form-row-1">
+						<label for="first_name">Name*</label>
+						<input type="text" name="name" required id="first_name" class="input-text">
+					</div>
+					<div class="form-row form-row-1">
+						<label for="last_name">Age*</label>
+						<input type="number" name="age" required id="last_name" class="input-text">
+					</div>
+				</div>
+				<div class="form-row">
+					<label for="your_email">Email*</label>
+					<input type="email" name="email" id="your_email" class="input-text" required onblur="this.style.borderColor= this.checkValidity() ? 'green' : 'red'" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+				</div>
+				<div class="form-row">
+					<label for="Whatsapp_no">Whatsapp no*</label>
+					<input type="number" name="number" id="contact" class="input-text" required onblur="this.style.borderColor= this.checkValidity() ? 'green' : 'red'" name="phone" pattern="[6-9][0-9]{9}$">
+				</div>
+				<div class="form-row">
+					<label for="address">Address*</label>
+					<input type="text" name="address" id="address" class="input-text" required >
+				</div>
+				<div class="form-row">
+					<label for="city">City & State*</label>
+					<input type="text" name="city" id="city" class="input-text" required >
+				</div>
+				<div class="form-row">
+					<label for="rec_date">Occupation*</label>
+					<input type="text" name="occupation" id="rec_date" class="input-text" placeholder="student" required >
+				</div>
+				<div class="form-row">
+					<label for="rec_date">College name (if student)</label>
+					<input type="text" name="college" id="rec_date" class="input-text"  >
+				</div>
+				<div class="form-row">
+					<label for="rec_date">Course & year (if student)</label>
+					<input type="text" name="course" id="rec_date" class="input-text" >
+				</div>
+				<div class="form-row">
+					<label for="don_before">Any prior experience in social work in general or fundraising in particular *</label>
+					<textarea  name="prevexp" id="don_before" rows="4" style="width: 100%;" class="input-text" required ></textarea>
+				</div>
+				<div class="form-row">
+					<label for="don_before">What inspired you to do this work? *</label>
+					<textarea  name="inspiration" id="don_before" rows="4" style="width: 100%;" class="input-text" required ></textarea>
+				</div>
+				<!-- <div class="form-row">
+					<label >Use your Skills and make a difference in the society. Select your field of interest (Choose wisely) *</label>
+					<div class="form-checkbox">
+						<div class="checkmark">
+							<input class="checked" type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+							<p>hello</p>
+						</div>
+						
+					</div>				
+				</div> -->
+				<div class="form-row">
+					<label for="don_before">Add the screenshot of your online payment before proceeding further. Pay via UPI/PAYTM -- fete@paytm/9897573524 *</label>
+					<label for="Image" class="custom-file-upload col-12 col-lg-10">
+						<i class="fa fa-cloud-upload"></i> Choose your file<p> </p>
+					</label>
+					<input id="Image" name="image" type="file" accept="image/*" required />
+				</div>
+				<div class="form-row  d-flex justify-content-center">
+					<!-- <input type="submit" name="register" class="register" value="Register"> -->
+					<button type="submit" name="register" class="register ml-4 mr-4 p-3 pl-5  pr-5" value="Register"> Register </button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+	<script>
+		// just for the demos, avoids form submit
+		jQuery.validator.setDefaults({
+		  	debug: true,
+		  	success:  function(label){
+        		label.attr('id', 'valid');
+   		 	},
+		});
+		$( "#myform" ).validate({
+		  	rules: {
+			    password: "required",
+		    	comfirm_password: {
+		      		equalTo: "#password"
+		    	}
+		  	},
+		  	messages: {
+		  		first_name: {
+		  			required: "Please enter a firstname"
+		  		},
+		  		last_name: {
+		  			required: "Please enter a lastname"
+		  		},
+		  		your_email: {
+		  			required: "Please provide an email"
+		  		},
+		  		password: {
+	  				required: "Please enter a password"
+		  		},
+		  		comfirm_password: {
+		  			required: "Please enter a password",
+		      		equalTo: "Wrong Password"
+		    	}
+		  	}
+		});
+	</script>
+</body>
+
+
+
+{% endblock content %}

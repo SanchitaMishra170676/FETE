@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    section{
+        margin-top: -20px;
+        overflow: hidden;
+        height: 100%;
+        font-family: 'Roboto', sans-serif;
+        background: white;
+        margin-bottom: -150px;
+    }
+
+    .strip{
+        position: absolute;
+        height: 100%;
+        background: #dcb285;
+        width: 0.1625rem;
+        opacity: .3;
+    }
+
+    .one{
+        left: 25%;
+    }        
+
+    .two{
+        left: 50%;
+    }
+
+    .three{
+        left: 75%;
+    }
+
+    .tcontainer{
+        align-items: flex-start;
+        display: flex;
+        justify-content: center;
+        padding: 16.875rem 1.5rem;
+    }
+
+    .tcard-grid{
+        display: grid;
+        grid-column-gap: 1.5rem;
+        max-width: 75rem;
+        width: 100%;
+    }
+
+    @media(min-width: 75rem){
+        .tcard-grid{
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    .tcard{
+        position: relative;
+        margin-bottom: 2.5rem;
+    }
+
+    .tcard::before{
+        content: '';
+        display: block;
+        padding-bottom: 150%;
+    }
+
+    .tcard-background{
+        background-size: cover;
+        background-position: center;
+        border-radius: 0.9375rem;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: filter .2s linear, transform 200ms linear;
+    }
+
+    .tcard:hover .tcard-background{
+        transform: scale(1.25) translateZ(0);
+    }
+
+    .tcard-grid:hover > .tcard:not(:hover) .tcard-background{
+        filter: brightness(1) saturate(0) contrast(1) blur(0.2rem);
+    }
+
+    .tcard-content{
+        padding: 14.375rem 1.25rem;
+        position: absolute;
+        top: 0;
+    }
+
+    .tcard-category{
+        color: rgba(255, 255, 255, 0.952);
+        font-size: .9rem;
+        text-transform: uppercase;
+    }
+
+    .tcard-heading{
+        color: rgba(255, 255, 255, .9);
+        font-size: 1.6rem;
+        text-shadow: 0.125rem 0.125rem 1.25rem rgba(0 , 0, 0, .2);
+    }
+    
+    
+</style>
+
+<section>
+
+    <div>
+        <div class="strip one"></div>
+        <div class="strip two"></div>
+        <div class="strip three"></div>
+    </div>
+    <br><br>
+    <div class="d-flex justify-content-center td" style="margin-top: 100px; margin-bottom: -200px;">
+        <h1 class="font-weight-bold blue-color" >FETE TEAM</h1>
+    </div>
+    {% if team %}
+    <div class="tcontainer">
+        <div class="tcard-grid">
+            {% for team in team %}
+            <a href="" class="tcard">
+                <div class="tcard-background" style="background-image: url(/media/{{team.image}});"></div>
+                <span class="tcard-content">
+                    <h5 class="tcard-heading">{{team.name}}</h5>
+                    <p class="tcard-category">
+                        {{team.post}}
+                    </p>
+                </span>
+            </a>
+            {% endfor %}
+        </div>
+        
+    </div>
+    {% else %}
+    <div class="d-flex justify-content-center td" style="margin-top: 100px; margin-bottom: -200px;">
+        <h4 class="font-weight-bold blue-color" >No Content Found</h4>
+    </div>
+    {% endif %}
+</section>
+
+
+
+{% endblock content %}
