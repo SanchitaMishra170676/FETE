@@ -57,7 +57,7 @@ ROOT_URLCONF = 'fete.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'templates'],
+        'DIRS': [r'fete/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
